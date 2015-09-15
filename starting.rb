@@ -1,8 +1,7 @@
 require_relative 'welcome_message'
 class Menu
-    def options()
-        system ("cls")
-        WelcomeMessage.new.introduction
+    def options
+        WelcomeMessage.new.introduction_message
     end
 
     end

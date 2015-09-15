@@ -1,7 +1,8 @@
+require_relative 'welcome_message'
 class Computer
 
   def self.code_beginner
-    colors = ['b', 'g', 'y', 'r']
+    colors = ['y', 'c', 'o', 'r']
     colors_rand = Random.new
     generated_code = []
     4.times{ generated_code << colors[rand(4)] }
@@ -34,16 +35,24 @@ class GameEngine
 
     if counter == generated_code.length
              end_time=Time.now
-             puts "Congratulations! You guessed the sequence #{generated_code} in #{end_time-start_time}\n
+             puts "CONGRATULATION! You guessed the sequence #{generated_code} in #{end_time-start_time}\n
 Do you want to (p)lay again or (q)uit?"
 break
+WelcomeMessage.new.start_message
 else
     puts "#{guess_one} has #{counter_partial} with #{counter} in the correct positions. You have taken #{i+1}"
+
         end
     end
+    puts "You lost badly, SORRY! Do you want to try again? Enter (y) for Yes or any key for No\n"
+    feedback = gets.chomp
+    if feedback == "y"
+      WelcomeMessage.new.start_message
+   else
+     system(exit)
+   end
 end
 end
-
 class Player_one
   def guess_code_one
     puts "What is your guess?"
@@ -60,6 +69,3 @@ class Player_two
     return GameProcess.play_two
   end
 end
-a = Computer.new
-b = GameEngine.new
-b.play_calc_exact_partial

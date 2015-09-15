@@ -1,9 +1,12 @@
 require_relative 'demola_mastermind_project'
 class WelcomeMessage
-  def introduction
+  def introduction_message
       puts "Welcome to MASTERMIND!\n
   Would you like to (p)lay, read the (i)nstructions, read a little (b)ackground on
    Mastermind or (q)uit?"
+   WelcomeMessage.start_message
+ end
+ def start_message
    introductory = gets.chomp
    case introductory
    when "p"
@@ -18,7 +21,7 @@ Enter (3) for Advanced."
         puts "#{name}, I have generated a beginner sequence with four elements made up of:
 (y)ellow.yellow, (c)yan.cyan, (o)range.orange and (r)ed.red You are to guess the sequence in which the
 se colors appeared e.g YCOR for (y)ellow, (c)yan, (o)range and (r)ed. You have 10 guesses to get these colors or you lose the game.
-Ready to play?"
+Ready to play?\n Enter your Four Color guesses:"
     GameEngine.new.play_calc_exact_partial
 elsif level == "2"
   puts "So you would like to play the game!,\n start by telling me your name\n"
@@ -42,7 +45,7 @@ end
    when "i" then puts "Enter a sequence of 4 colors containing the generated colors e.g RYBG or YGRB.
 If you enter fewer than 4 or more than 4 colors, you would receive an error mess
 age"
-WelcomeMessage.new.introduction
+WelcomeMessage.new.introduction_message
 when "b" then puts "Just a little background on MASTERMIND Mastermind is a board game with an
 interesting history (or rather a legend?). Some game books report that it was in
 vented in 1971 by Mordecai Meirowitz, an Israeli postmaster and telecommunicatio
@@ -54,10 +57,10 @@ milar game called 'Bulls and cows' in English, and 'Numerello' in Italian... Act
 ually, the old British game 'Bulls and cows' was somewhat different from the com
 mercial version. It was played on paper, not on a board... Over 50 million copie
 s later, Mastermind is still marketed today!"
-WelcomeMessage.new.introduction
+WelcomeMessage.new.introduction_message
   when "q" then puts "Thank you for playing Mastermind\n Good byebye"
     system('exit')
 end
   end
 end
-WelcomeMessage.new.introduction
+WelcomeMessage.new.introduction_message
