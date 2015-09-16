@@ -42,19 +42,19 @@ class GameEngine
   def play_calc_exact_partial level
         start_time=Time.now
         generated_code = Difficulty.code_level level
-
+        
           10.times do |i|
 
           guess_one = (gets.chomp).split('')
             exact_match = 0
-            partial_near = 0
+            partial_match = 0
             check = generated_code.zip(guess_one)
               check.each do |i|
               if i[0] == i[1]
                   exact_match += 1
               else
                   if generated_code.include?i[1]
-                      partial_near += 1
+                      partial_match += 1
                   end
               end
           end
@@ -72,7 +72,7 @@ class GameEngine
              end
 break
 else
-    puts "#{guess_one} ".cyan + " has " + "#{partial_near} ".red + " partial match with " + "#{exact_match} ".blue + "
+    puts "#{guess_one} ".cyan + " has " + "#{partial_match} ".red + " partial match with " + "#{exact_match} ".blue + "
     exact match in the correct positions. You have taken " + "#{i+1}".cyan
 
         end
