@@ -8,39 +8,63 @@ class Computer
     4.times{ generated_code << colors[rand(4)] }
     generated_code
   end
+  def self.code_intermediate
+    colors = ['y', 'c', 'o', 'r', 'v']
+    colors_rand = Random.new
+    generated_code = []
+    5.times{ generated_code << colors[rand(5)] }
+    generated_code
+  end
+  def self.code_advance
+    colors = ['y', 'c', 'o', 'r', 'v', 'p']
+    colors_rand = Random.new
+    generated_code = []
+    6.times{ generated_code << colors[rand(6)] }
+    generated_code
+  end
 end
+class Difficulty
+  def code_level
+    if @level == "1"
+    generated_code = Computer.code_beginner
 
+  elsif @level == "2"
+    generated_code = Computer.code_intermediate
+  else
+    generated_code = Computer.code_advance
+  end
+end
 class GameEngine
 
   def play_calc_exact_partial
         start_time=Time.now
-        generated_code = Computer.code_beginner
+        generated_code
 
           10.times do |i|
 
           guess_one = (gets.chomp).split('')
 
-            counter = 0
-            counter_partial = 0
+            exact_match = 0
+            partial_near = 0
             check = generated_code.zip(guess_one)
               check.each do |i|
               if i[0] == i[1]
-                  counter += 1
+                  exact_match += 1
               else
                   if generated_code.include?i[1]
-                      counter_partial += 1
+                      partial_near += 1
                   end
               end
           end
 
-    if counter == generated_code.length
+    if exact_match == generated_code.length
              end_time=Time.now
              puts "CONGRATULATION! You guessed the sequence #{generated_code} in #{end_time-start_time}\n
 Do you want to (p)lay again or (q)uit?"
 break
 WelcomeMessage.new.start_message
 else
-    puts "#{guess_one} has #{counter_partial} with #{counter} in the correct positions. You have taken #{i+1}"
+    puts "#{guess_one} has #{partial_near} partial match with #{exact_match} exact match in the correct positions. You have taken #{i+1}"
 
         end
     end

@@ -6,7 +6,7 @@ class WelcomeMessage
    Mastermind or (q)uit?"
    WelcomeMessage.start_message
  end
- def start_message
+ def self.start_message
    introductory = gets.chomp
    case introductory
    when "p"
@@ -14,8 +14,8 @@ class WelcomeMessage
 Enter (1) for Beginner,
 Enter (2) for Intermediate,
 Enter (3) for Advanced."
-    level = gets.chomp
-    if level == "1"
+    @level = gets.chomp
+    if @level == "1"
       puts "So you would like to play the game!,\n start by telling me your name\n"
         name = gets.chomp
         puts "#{name}, I have generated a beginner sequence with four elements made up of:
@@ -23,20 +23,20 @@ Enter (3) for Advanced."
 se colors appeared e.g YCOR for (y)ellow, (c)yan, (o)range and (r)ed. You have 10 guesses to get these colors or you lose the game.
 Ready to play?\n Enter your Four Color guesses:"
     GameEngine.new.play_calc_exact_partial
-elsif level == "2"
+elsif @level == "2"
   puts "So you would like to play the game!,\n start by telling me your name\n"
     name = gets.chomp
     puts "#{name}, I have generated an Intermediate sequence with five elements made up of:
 (y)ellow, (c)yan, (o)range, (r)ed,(v)iolet . You are to guess the sequence in which the
-se colors appeared e.g YCOR for (y)ellow, (c)yan, (o)range and (r)ed, (v)iolet. You have 10 guesses to get these colors or you lose the game.
+se colors appeared e.g YCORV for (y)ellow, (c)yan, (o)range and (r)ed, (v)iolet. You have 10 guesses to get these colors or you lose the game.
 Ready to play?"
     GameEngine.new.play_calc_exact_partial
-elsif level == "3"
+elsif @level == "3"
   puts "So you would like to play the game!,\n start by telling me your name\n"
     name = gets.chomp
     puts "#{name}, I have generated an advanced sequence with six elements made up of:
-(y)ellow, (c)yan, (o)range, (r)ed,(v)iolet . You are to guess the sequence in which the
-se colors appeared e.g YCOR for (y)ellow, (c)yan, (o)range and (r)ed, (v)iolet, (i)ndigo. You have 10 guesses to get these colors or you lose the game.
+(y)ellow, (c)yan, (o)range, (r)ed,(v)iolet, (p)urple . You are to guess the sequence in which the
+se colors appeared e.g YCORVP for (y)ellow, (c)yan, (o)range and (r)ed, (P)urple, (i)ndigo. You have 10 guesses to get these colors or you lose the game.
 Ready to play?"
       GameEngine.new.play_calc_exact_partial
 else
