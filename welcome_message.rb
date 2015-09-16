@@ -37,14 +37,13 @@ elsif @level == "3"
     puts "#{name}, I have generated an advanced sequence with six elements made up of:
 (y)ellow, (c)yan, (o)range, (r)ed,(v)iolet, (p)urple . You are to guess the sequence in which the
 se colors appeared e.g YCORVP for (y)ellow, (c)yan, (o)range and (r)ed, (P)urple, (i)ndigo. You have 10 guesses to get these colors or you lose the game.
-Ready to play?"
+Ready to play?\n Enter your Four Color guesses:"
       GameEngine.new.play_calc_exact_partial
 else
   puts "You have entered an invalid input"
 end
    when "i" then puts "Enter a sequence of 4 colors containing the generated colors e.g RYBG or YGRB.
-If you enter fewer than 4 or more than 4 colors, you would receive an error mess
-age"
+If you enter fewer than 4 or more than 4 colors, you would receive an error message"
 WelcomeMessage.new.introduction_message
 when "b" then puts "Just a little background on MASTERMIND Mastermind is a board game with an
 interesting history (or rather a legend?). Some game books report that it was in
@@ -56,7 +55,7 @@ ost of the world. However, Mastermind is just a clever readaptation of an old si
 milar game called 'Bulls and cows' in English, and 'Numerello' in Italian... Act
 ually, the old British game 'Bulls and cows' was somewhat different from the com
 mercial version. It was played on paper, not on a board... Over 50 million copie
-s later, Mastermind is still marketed today!"
+s later, Mastermind is still marketed today!\n Enter your Four Color guesses:"
 WelcomeMessage.new.introduction_message
   when "q" then puts "Thank you for playing Mastermind\n Good byebye"
     system('exit')

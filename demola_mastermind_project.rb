@@ -24,7 +24,8 @@ class Computer
   end
 end
 class Difficulty
-  def code_level
+
+  def self.code_level
     if @level == "1"
     generated_code = Computer.code_beginner
 
@@ -34,11 +35,12 @@ class Difficulty
     generated_code = Computer.code_advance
   end
 end
+end
 class GameEngine
 
   def play_calc_exact_partial
         start_time=Time.now
-        generated_code
+        generated_code = Difficulty.code_level
 
           10.times do |i|
 
