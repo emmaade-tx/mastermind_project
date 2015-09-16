@@ -20,27 +20,24 @@ Enter (3) for Advanced."
       puts "So you would like to play the game!,\n start by telling me your name\n"
         name = gets.chomp
         name_convert = name.upcase
-        puts "#{name_convert}".green + ", I have generated a beginner sequence with four elements made up of:\n"
-puts "(y)ellow,".yellow + "(c)yan,".cyan + "(b)lue,".blue + "and" + "(r)ed,".red + "You are to guess the sequence in which the
-colors appeared e.g YCOR for" + "(y)ellow,".yellow + "(c)yan,".cyan + "(b)lue,".blue + "(r)ed,".red + "You have 10 guesses to get these colors or you lose the game.
-Ready to" + "play?".blue + "\n" + "Enter your Four Color guesses:"
+        puts "#{name_convert} ".green + ", I have generated a beginner sequence with four elements made up of:\n"
+puts "(y)ellow, ".yellow + " (c)yan, ".cyan + " (b)lue,".blue + " and " + " (r)ed,".red + " You are to guess the sequence in which the
+colors appeared e.g YCOR for " + "(y)ellow, ".yellow + " (c)yan,".cyan + " (b)lue,".blue + " (r)ed,".red + " You have 10 guesses to get these colors or you lose the game.
+Ready to " + " play?".blue + "\n" + " Enter your Four Color guesses:"
     GameEngine.new.play_calc_exact_partial @level
 elsif @level == "2"
   puts "So you would like to play the game!,\n start by telling me your name\n"
     name = gets.chomp
     name_convert = name.upcase
-  puts "#{name_convert}".green + ", I have generated a beginner sequence with four elements made up of:\n"
-puts "(y)ellow,".yellow + "(c)yan,".cyan + "(b)lue,".blue + "(g)reen".green + "and" + "(r)ed,".red + "You are to guess the sequence in which the
-se colors appeared e.g YCBGR for" + "(y)ellow,".yellow + "(c)yan,".cyan + "(b)lue,".blue + "(g)reen".green + "(r)ed,".red + "You have 10 guesses to get these colors or you lose the game.
-Ready to play?\n Enter your five Color guesses:"
+  puts "#{name_convert} ".green + ", I have generated an Intermediate sequence with four elements made up of:\n"
+puts "(y)ellow, ".yellow + "(c)yan, ".cyan + "(b)lue, ".blue + "(g)reen ".green + " and " + " (r)ed,".red + " You are to guess the sequence in which these colors appeared e.g YCBGR for " + " (y)ellow, ".yellow + " (c)yan, ".cyan + " (b)lue, ".blue + " (g)reen ".green + " (r)ed, ".red + " You have 10 guesses to get these colors or you lose the game. Ready to play?\n Enter your five Color guesses:"
     GameEngine.new.play_calc_exact_partial @level
 elsif @level == "3"
   puts "So you would like to play the game!,\n start by telling me your name\n"
     name = gets.chomp
     name_convert = name.upcase
-    puts "#{name_convert}".green + ", I have generated a beginner sequence with four elements made up of:\n"
-puts "(y)ellow,".yellow + "(c)yan,".cyan + "(b)lue,".blue + "(g)reen".green + "(w)hite".white + "and" + "(r)ed,".red + "You are to guess the sequence in which the
-se colors appeared e.g YCBGWR for" + "(y)ellow,".yellow + "(c)yan,".cyan + "(b)lue,".blue + "(g)reen".green + "(w)hite".white + "(r)ed,".red + "You have 10 guesses to get these colors or you lose the game.
+    puts "#{name_convert}".green + ", I have generated an Advanced sequence with four elements made up of:\n"
+puts "(y)ellow,".yellow + "(c)yan,".cyan + "(b)lue,".blue + "(g)reen ".green + "(w)hite ".white + " and " + "(r)ed,".red + " You are to guess the sequence in which these colors appeared e.g YCBGWR for " + " (y)ellow, ".yellow + " (c)yan,".cyan + " (b)lue, ".blue + " (g)reen ".green + "(w)hite ".white + "(r)ed, ".red + " You have 10 guesses to get these colors or you lose the game.
 Ready to play?\n Enter your six Color guesses:"
       GameEngine.new.play_calc_exact_partial @level
 else
@@ -58,7 +55,7 @@ ost of the world. However, Mastermind is just a clever readaptation of an old si
 milar game called 'Bulls and cows' in English, and 'Numerello' in Italian... Act
 ually, the old British game 'Bulls and cows' was somewhat different from the com
 mercial version. It was played on paper, not on a board... Over 50 million copie
-s later, Mastermind is still marketed today!\n Enter your Four Color guesses:".yellow
+s later, Mastermind is still marketed today!".yellow
 WelcomeMessage.new.introduction_message
   when "q" then puts "Thank you for playing Mastermind\n Good byebye".blue
     system('exit')

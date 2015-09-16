@@ -61,9 +61,9 @@ class GameEngine
 
     if exact_match == generated_code.length
              end_time=Time.now
-             puts "CONGRATULATION!".blue + " You guessed the sequence #{generated_code} in #{end_time-start_time}"
+             puts "CONGRATULATION! ".blue + " You guessed the sequence " + " #{generated_code} ".red + " in" + " #{end_time-start_time}".cyan
 
-             puts "Do you want to " + "(p)lay again" + " or" + "(q)uit?".red
+             puts "Do you want to " + " (p)lay again " + " or" + " (q)uit?".red
              feedback_one = gets.chomp
              if feedback_one == "p"
                WelcomeMessage.new.introduction_message
@@ -72,12 +72,12 @@ class GameEngine
              end
 break
 else
-    puts "#{guess_one}".cyan + " has" + "#{partial_near}".red + " partial match with" + "#{exact_match}".blue + "
-    exact match in the correct positions. You have taken" + "#{i+1}".cyan
+    puts "#{guess_one} ".cyan + " has " + "#{partial_near} ".red + " partial match with " + "#{exact_match} ".blue + "
+    exact match in the correct positions. You have taken " + "#{i+1}".cyan
 
         end
     end
-    puts "You lost badly," + "SORRY!".red + " Do you want to" + "Try again?".cyan + "Enter" + "(y)".blue + " for" + " Yes".blue + " or any key for" + "No\n".red
+    puts "You lost badly, " + "SORRY!".red + " Do you want to " + " Try again?".cyan + " Enter " + " (y)".blue + " for" + " Yes".blue + " or any key for " + "No\n".red
     feedback = gets.chomp
     if feedback == "y"
       WelcomeMessage.new.introduction_message
