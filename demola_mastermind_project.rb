@@ -42,7 +42,7 @@ class GameEngine
   def play_calc_exact_partial level
         start_time=Time.now
         generated_code = Difficulty.code_level level
-        
+
           10.times do |i|
 
           guess_one = (gets.chomp).split('')
