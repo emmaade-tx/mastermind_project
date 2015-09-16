@@ -1,22 +1,23 @@
 require_relative 'welcome_message'
+require 'colorize'
 class Computer
 
   def self.code_beginner
-    colors = ['y', 'c', 'o', 'r']
+    colors = ['y', 'c', 'b', 'r']
     colors_rand = Random.new
     generated_code = []
     4.times{ generated_code << colors[rand(4)] }
     generated_code
   end
   def self.code_intermediate
-    colors = ['y', 'c', 'o', 'r', 'v']
+    colors = ['y', 'c', 'b', 'g', 'r']
     colors_rand = Random.new
     generated_code = []
     5.times{ generated_code << colors[rand(5)] }
     generated_code
   end
   def self.code_advance
-    colors = ['y', 'c', 'o', 'r', 'v', 'p']
+    colors = ['y', 'c', 'b', 'g', 'w', 'r']
     colors_rand = Random.new
     generated_code = []
     6.times{ generated_code << colors[rand(6)] }
@@ -60,9 +61,9 @@ class GameEngine
 
     if exact_match == generated_code.length
              end_time=Time.now
-             puts "CONGRATULATION! You guessed the sequence #{generated_code} in #{end_time-start_time}"
+             puts "CONGRATULATION!".blue + " You guessed the sequence #{generated_code} in #{end_time-start_time}"
 
-             puts "Do you want to (p)lay again or (q)uit?"
+             puts "Do you want to " + "(p)lay again" + " or" + "(q)uit?".red
              feedback_one = gets.chomp
              if feedback_one == "p"
                WelcomeMessage.new.introduction_message
@@ -71,11 +72,12 @@ class GameEngine
              end
 break
 else
-    puts "#{guess_one} has #{partial_near} partial match with #{exact_match} exact match in the correct positions. You have taken #{i+1}"
+    puts "#{guess_one}".cyan + " has" + "#{partial_near}".red + " partial match with" + "#{exact_match}".blue + "
+    exact match in the correct positions. You have taken" + "#{i+1}".cyan
 
         end
     end
-    puts "You lost badly, SORRY! Do you want to try again? Enter (y) for Yes or any key for No\n"
+    puts "You lost badly," + "SORRY!".red + " Do you want to" + "Try again?".cyan + "Enter" + "(y)".blue + " for" + " Yes".blue + " or any key for" + "No\n".red
     feedback = gets.chomp
     if feedback == "y"
       WelcomeMessage.new.introduction_message
