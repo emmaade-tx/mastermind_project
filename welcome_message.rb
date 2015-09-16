@@ -22,7 +22,7 @@ Enter (3) for Advanced."
 (y)ellow.yellow, (c)yan.cyan, (o)range.orange and (r)ed.red You are to guess the sequence in which the
 se colors appeared e.g YCOR for (y)ellow, (c)yan, (o)range and (r)ed. You have 10 guesses to get these colors or you lose the game.
 Ready to play?\n Enter your Four Color guesses:"
-    GameEngine.new.play_calc_exact_partial
+    GameEngine.new.play_calc_exact_partial @level
 elsif @level == "2"
   puts "So you would like to play the game!,\n start by telling me your name\n"
     name = gets.chomp
@@ -30,7 +30,7 @@ elsif @level == "2"
 (y)ellow, (c)yan, (o)range, (r)ed,(v)iolet . You are to guess the sequence in which the
 se colors appeared e.g YCORV for (y)ellow, (c)yan, (o)range and (r)ed, (v)iolet. You have 10 guesses to get these colors or you lose the game.
 Ready to play?"
-    GameEngine.new.play_calc_exact_partial
+    GameEngine.new.play_calc_exact_partial @level
 elsif @level == "3"
   puts "So you would like to play the game!,\n start by telling me your name\n"
     name = gets.chomp
@@ -38,7 +38,7 @@ elsif @level == "3"
 (y)ellow, (c)yan, (o)range, (r)ed,(v)iolet, (p)urple . You are to guess the sequence in which the
 se colors appeared e.g YCORVP for (y)ellow, (c)yan, (o)range and (r)ed, (P)urple, (i)ndigo. You have 10 guesses to get these colors or you lose the game.
 Ready to play?\n Enter your Four Color guesses:"
-      GameEngine.new.play_calc_exact_partial
+      GameEngine.new.play_calc_exact_partial @level
 else
   puts "You have entered an invalid input"
 end

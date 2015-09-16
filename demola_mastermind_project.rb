@@ -25,11 +25,11 @@ class Computer
 end
 class Difficulty
 
-  def self.code_level
-    if @level == "1"
+  def self.code_level level
+    if level == "1"
     generated_code = Computer.code_beginner
 
-  elsif @level == "2"
+  elsif level == "2"
     generated_code = Computer.code_intermediate
   else
     generated_code = Computer.code_advance
@@ -38,14 +38,13 @@ end
 end
 class GameEngine
 
-  def play_calc_exact_partial
+  def play_calc_exact_partial level
         start_time=Time.now
-        generated_code = Difficulty.code_level
+        generated_code = Difficulty.code_level level
 
           10.times do |i|
 
           guess_one = (gets.chomp).split('')
-
             exact_match = 0
             partial_near = 0
             check = generated_code.zip(guess_one)
@@ -61,10 +60,16 @@ class GameEngine
 
     if exact_match == generated_code.length
              end_time=Time.now
-             puts "CONGRATULATION! You guessed the sequence #{generated_code} in #{end_time-start_time}\n
-Do you want to (p)lay again or (q)uit?"
+             puts "CONGRATULATION! You guessed the sequence #{generated_code} in #{end_time-start_time}"
+
+             puts "Do you want to (p)lay again or (q)uit?"
+             feedback_one = gets.chomp
+             if feedback_one == "p"
+               WelcomeMessage.new.introduction_message
+             else
+              system(exit)
+             end
 break
-WelcomeMessage.new.start_message
 else
     puts "#{guess_one} has #{partial_near} partial match with #{exact_match} exact match in the correct positions. You have taken #{i+1}"
 
@@ -73,7 +78,7 @@ else
     puts "You lost badly, SORRY! Do you want to try again? Enter (y) for Yes or any key for No\n"
     feedback = gets.chomp
     if feedback == "y"
-      WelcomeMessage.new.start_message
+      WelcomeMessage.new.introduction_message
    else
      system(exit)
    end
