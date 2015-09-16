@@ -4,21 +4,18 @@ class Computer
 
   def self.code_beginner
     colors = ['y', 'c', 'b', 'r']
-    colors_rand = Random.new
     generated_code = []
     4.times{ generated_code << colors[rand(4)] }
     generated_code
   end
   def self.code_intermediate
     colors = ['y', 'c', 'b', 'g', 'r']
-    colors_rand = Random.new
     generated_code = []
     5.times{ generated_code << colors[rand(5)] }
     generated_code
   end
   def self.code_advance
     colors = ['y', 'c', 'b', 'g', 'w', 'r']
-    colors_rand = Random.new
     generated_code = []
     6.times{ generated_code << colors[rand(6)] }
     generated_code
