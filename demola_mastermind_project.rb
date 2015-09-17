@@ -1,5 +1,7 @@
-require_relative 'welcome_message'
+ require_relative 'welcome_message'
 require 'colorize'
+require 'json'
+require 'pry'
 class Computer #the computer class has 3 methods which generate 3 different codes for each level
 
 #this method generates 4 random codes
@@ -41,6 +43,7 @@ end
 
 class GameEngine #this is the engine of the game as the name implies, it gets the partial and exact match by comparing the the generated code with the user's guess code
   def play_calc_exact_partial level, name_convert
+
         start_time=Time.now # this line of code records the starting time
         generated_code = Difficulty.code_level level  #this line of code gets the computer generated code for any the level as picked by the user
         p generated_code
@@ -62,17 +65,13 @@ class GameEngine #this is the engine of the game as the name implies, it gets th
 
     if exact_match == generated_code.length # at a point where we have the same length of computer generated code and exact match, game ends and the user won the game
              end_time=Time.now #time stops
-             puts "CONGRATULATION, #{name_convert}! ".blue + " You guessed the sequence " + " #{generated_code} ".red + " in" + " #{end_time-start_time}".cyan
+             @finished_time = end_time-start_time
+             puts "CONGRATULATION, #{name_convert}! ".blue + " You guessed the sequence " + " #{generated_code} ".red + " in" + " #{@finished_time}".cyan
 
-             puts "Do you want to " + " (p)lay again " + " or" + " (q)uit?".red
-             feedback_one = gets.chomp
-             if feedback_one == "p"
-               WelcomeMessage.new.introduction_message
-             else
-              system(exit)
-             end
-break # at the point where the exact match equals the computer code length, the loop breaks, if not the loops continues
-else
+             TopScore.topscore_file name_convert, @finished_time
+
+             break # at the point where the exact match equals the computer code length, the loop breaks, if not the loops continues
+    else
     puts "#{guess_one} ".cyan + " has " + "#{partial_match} ".magenta + " partial match with " + "#{exact_match} ".blue + "
     exact match in the correct positions. You have taken " + "#{i+1}".cyan
 
@@ -84,14 +83,57 @@ else
     if feedback == "y"
       WelcomeMessage.new.introduction_message
    else
+       puts "Thank you for playing Mastermind\n Good byebye".blue
      system(exit) #this code breaks the whole of my code and leaves the entire game
    end
 
 end
 end
+class TopScore
+    def self.topscore_file name_convert, finished_time
 
+        file = File.read("score.json")
+        score = JSON.parse(file)
+        len = score["scores"].length
 
+        record = Hash.new
+        record["name"] = name_convert
+        record["time"] = finished_time
+        score["scores"][len] = record
 
+        name_score = score.to_json
+
+        file = File.new("score.json", 'w')
+        file.write(name_score)
+        file.close
+
+        file = File.read("score.json")
+        top_score = JSON.parse(file)
+
+        top_scores = top_score["scores"].sort_by {|x| x["time"]}
+          puts "Do you want to view the top score? type" + " y".blue + " for yes," + " N".magenta + " for no and" + " q".red + " to quit the game"
+          reply = gets.chomp
+          if reply == "y"
+          #binding.pry
+          puts "******TOP SCORES******"
+          top_scores.each do |x|
+            #binding.pry
+            puts "#{x["name"]} ............#{x["time"]}secs"
+
+            puts "You have just seen the top score, do you want to play again or quit the game? Type" + " p".blue + " to play again and" + " q".red + " to quit"
+            final_reply = gets.chomp
+
+          end
+        elsif reply == "n"
+        WelcomeMessage.new.introduction_message
+      else
+        puts "Thank you for playing Mastermind\n Good byebye".blue
+        system(exit)
+
+        end
+
+    end
+  end
 # Working on having a multiplayer where they can pass a turn..... still in progress
 class Player_one
   def guess_code_one

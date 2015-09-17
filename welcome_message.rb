@@ -29,15 +29,15 @@ Ready to " + " play?".blue + "\n" + " Enter your Four Color guesses:"
     GameEngine.new.play_calc_exact_partial @level, @name_convert
 elsif @level == "2"
   puts "So you would like to play the game!,\n start by telling me your name\n"
-    name = gets.chomp
-    name_convert = name.upcase
+    @name = gets.chomp
+    @name_convert = @name.upcase
   puts "#{@name_convert} ".green + ", I have generated an Intermediate sequence with four elements made up of:\n"
 puts "(y)ellow, ".yellow + "(c)yan, ".cyan + "(b)lue, ".blue + "(g)reen ".green + " and " + " (r)ed,".red + " You are to guess the sequence in which these colors appeared e.g YCBGR for " + " (y)ellow, ".yellow + " (c)yan, ".cyan + " (b)lue, ".blue + " (g)reen ".green + " (r)ed, ".red + " You have 10 guesses to get these colors or you lose the game. Ready to play?\n Enter your five Color guesses:"
     GameEngine.new.play_calc_exact_partial @level, @name_convert
 elsif @level == "3"
   puts "So you would like to play the game!,\n start by telling me your name\n"
-    name = gets.chomp
-    name_convert = name.upcase
+    @name = gets.chomp
+    @name_convert = @name.upcase
     puts "#{@name_convert}".green + ", I have generated an Advanced sequence with four elements made up of:\n"
 puts "(y)ellow,".yellow + "(c)yan,".cyan + "(b)lue,".blue + "(g)reen ".green + "(w)hite ".white + " and " + "(r)ed,".red + " You are to guess the sequence in which these colors appeared e.g YCBGWR for " + " (y)ellow, ".yellow + " (c)yan,".cyan + " (b)lue, ".blue + " (g)reen ".green + "(w)hite ".white + "(r)ed, ".red + " You have 10 guesses to get these colors or you lose the game.
 Ready to play?\n Enter your six Color guesses:"
