@@ -40,7 +40,7 @@ end
 end
 
 class GameEngine #this is the engine of the game as the name implies, it gets the partial and exact match by comparing the the generated code with the user's guess code
-  def play_calc_exact_partial level
+  def play_calc_exact_partial level, name_convert
         start_time=Time.now # this line of code records the starting time
         generated_code = Difficulty.code_level level  #this line of code gets the computer generated code for any the level as picked by the user
         p generated_code
@@ -62,7 +62,7 @@ class GameEngine #this is the engine of the game as the name implies, it gets th
 
     if exact_match == generated_code.length # at a point where we have the same length of computer generated code and exact match, game ends and the user won the game
              end_time=Time.now #time stops
-             puts "CONGRATULATION! ".blue + " You guessed the sequence " + " #{generated_code} ".red + " in" + " #{end_time-start_time}".cyan
+             puts "CONGRATULATION, #{name_convert}! ".blue + " You guessed the sequence " + " #{generated_code} ".red + " in" + " #{end_time-start_time}".cyan
 
              puts "Do you want to " + " (p)lay again " + " or" + " (q)uit?".red
              feedback_one = gets.chomp
@@ -73,7 +73,7 @@ class GameEngine #this is the engine of the game as the name implies, it gets th
              end
 break # at the point where the exact match equals the computer code length, the loop breaks, if not the loops continues
 else
-    puts "#{guess_one} ".cyan + " has " + "#{partial_match} ".red + " partial match with " + "#{exact_match} ".blue + "
+    puts "#{guess_one} ".cyan + " has " + "#{partial_match} ".magenta + " partial match with " + "#{exact_match} ".blue + "
     exact match in the correct positions. You have taken " + "#{i+1}".cyan
 
         end
@@ -86,8 +86,11 @@ else
    else
      system(exit) #this code breaks the whole of my code and leaves the entire game
    end
+
 end
 end
+
+
 
 # Working on having a multiplayer where they can pass a turn..... still in progress
 class Player_one
