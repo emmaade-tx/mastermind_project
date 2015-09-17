@@ -1,13 +1,15 @@
-require_relative 'demola_mastermind_project'
-require 'colorize'
-class WelcomeMessage
-  def introduction_message
+require_relative 'demola_mastermind_project' # reference the demola_mastermind_project.rb file
+require 'colorize'  # responsible for all the beautiful colors you are seeing when you play the game, try it yourself
+
+class WelcomeMessage # houses both introduction and start message class
+  def introduction_message # this is the introductory message method and also call the start_message method
       puts "Welcome to MASTERMIND!\n
   Would you like to " + "(p)lay".blue + ", read the" + " (i)nstructions".cyan + ", read a little" + " (b)ackground".yellow + " on
    Mastermind or " + " (q)uit?".red
    WelcomeMessage.start_message
  end
- def self.start_message
+
+ def self.start_message # contains all the messages you see when yoy play the game, it is the interactive method of the game, it always call the game engine and put it to work
    introductory = gets.chomp
    case introductory
    when "p"
